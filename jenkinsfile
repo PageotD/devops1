@@ -11,14 +11,14 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */  
 
-        app = docker.build("PageotD/devops1")
+        app = docker.build("psageotd/devops1")
     }
 
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
 
-        docker.image('PageotD/devops1').withRun('--rm -p 80:80 --name devops') { c ->
+        docker.image('pageotd/devops1').withRun('--rm -p 80:80 --name devops') { c ->
         sh 'docker ps'
         sh 'docker exec devops curl localhost:80'
         sh 'echo "Tests passed"'
